@@ -1,4 +1,4 @@
-{% set version = '0.1.6' %}
+{% set version = '0.2.0' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,12 +12,11 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/rlang_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rlang/rlang_{{ version }}.tar.gz
-  sha256: 772273e4f82ec33ffd28bf87bc44abbde2a6fb4b00e5723068ec5464b556c2f4
+  sha256: 4872a7d1b8e1e1a64a851dac707efb0c1dcbef69f6dadee417dac85b38740739
 
 build:
   number: 0
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
@@ -45,8 +44,13 @@ about:
   summary: A toolbox for working with base types, core R features like the condition system,
     and core 'Tidyverse' features like tidy evaluation.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
+    - cbrueffer
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
