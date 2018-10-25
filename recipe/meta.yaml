@@ -1,4 +1,4 @@
-{% set version = "0.3.0" %}
+{% set version = "0.3.0.1" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/rlang_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/rlang/rlang_{{ version }}.tar.gz
-  sha256: 9ab10ea3e19b2d60a289602ebbefa83509f430db1c8161e523896c374241b893
+  sha256: 29451db0a3cabd75761d32df47a5d43ccadbde07ecb693ffdd73f122a0b9f348
 
 build:
   merge_build_host: True  # [win]
