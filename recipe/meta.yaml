@@ -1,5 +1,4 @@
-{% set version = "0.3.0.1" %}
-
+{% set version = '0.3.1' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,39 +7,45 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: rlang_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/rlang_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/rlang/rlang_{{ version }}.tar.gz
-  sha256: 29451db0a3cabd75761d32df47a5d43ccadbde07ecb693ffdd73f122a0b9f348
+    - {{ cran_mirror }}/src/contrib/rlang_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/rlang/rlang_{{ version }}.tar.gz
+  sha256: 30427b2be2288e88acd30c4ea348ee06043a649fd73623a63148b1ad96317151
 
 build:
   merge_build_host: True  # [win]
-  number: 1000
-  skip: true  # [win32]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
 
 test:
   commands:
-    - $R -e "library('rlang')"  # [not win]
+    - $R -e "library('rlang')"           # [not win]
     - "\"%R%\" -e \"library('rlang')\""  # [win]
 
 about:
-  home: http://rlang.tidyverse.org
-  dev_url: https://github.com/tidyverse/rlang
+  home: http://rlang.r-lib.org, https://github.com/r-lib/rlang
   license: GPL-3
   summary: A toolbox for working with base types, core R features like the condition system,
     and core 'Tidyverse' features like tidy evaluation.
@@ -49,8 +54,26 @@ about:
 
 extra:
   recipe-maintainers:
-    - cbrueffer
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
+    - conda-forge/r
+
+# Package: rlang
+# Version: 0.3.1
+# Title: Functions for Base Types and Core R and 'Tidyverse' Features
+# Description: A toolbox for working with base types, core R features like the condition system, and core 'Tidyverse' features like tidy evaluation.
+# Authors@R: c( person("Lionel", "Henry", ,"lionel@rstudio.com", c("aut", "cre")), person("Hadley", "Wickham", ,"hadley@rstudio.com", "aut"), person("RStudio", role = "cph") )
+# License: GPL-3
+# LazyData: true
+# ByteCompile: true
+# Biarch: true
+# Depends: R (>= 3.1.0)
+# Suggests: crayon, magrittr, methods, pillar, testthat (>= 2.0.0), covr
+# Encoding: UTF-8
+# RoxygenNote: 6.1.1
+# URL: http://rlang.r-lib.org, https://github.com/r-lib/rlang
+# BugReports: https://github.com/r-lib/rlang/issues
+# NeedsCompilation: yes
+# Packaged: 2019-01-04 21:28:51 UTC; lionel
+# Author: Lionel Henry [aut, cre], Hadley Wickham [aut], RStudio [cph]
+# Maintainer: Lionel Henry <lionel@rstudio.com>
+# Repository: CRAN
+# Date/Publication: 2019-01-08 13:00:03 UTC
