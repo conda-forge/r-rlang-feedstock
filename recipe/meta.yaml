@@ -1,4 +1,4 @@
-{% set version = '0.3.2' %}
+{% set version = "0.3.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rlang_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rlang/rlang_{{ version }}.tar.gz
-  sha256: 110ee0909bb6bc21524d65776cc29dce15d7591409c42bd3654afa6c0f6c488f
+  sha256: 6b6d660ca8090d2543ec6c779c3f26d698e8a6e29d7589fcdfa25d19ad53b4dd
 
 build:
   merge_build_host: True  # [win]
