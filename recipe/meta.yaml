@@ -1,4 +1,4 @@
-{% set version = "0.4.4" %}
+{% set version = "0.4.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rlang_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rlang/rlang_{{ version }}.tar.gz
-  sha256: 433899ace23baee13d51d2344f080f0f6cd596fcb105b92d656b5a0ac0cc15cf
+  sha256: cd1fac76f1a6ac26e07cc11dd08c55947fe152e4703daf8c94e3a650721b10a8
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   rpaths:
     - lib/R/lib/
@@ -42,10 +42,9 @@ test:
 about:
   home: http://rlang.r-lib.org, https://github.com/r-lib/rlang
   license: GPL-3
-  summary: A toolbox for working with base types, core R features like the condition system,
-    and core 'Tidyverse' features like tidy evaluation.
+  summary: A toolbox for working with base types, core R features like the condition system, and core 'Tidyverse' features like tidy evaluation.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
