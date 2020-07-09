@@ -5,7 +5,7 @@ Home: http://rlang.r-lib.org, https://github.com/r-lib/rlang
 
 Package license: GPL-3.0-only
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: A toolbox for working with base types, core R features like the condition system, and core 'Tidyverse' features like tidy evaluation.
 
