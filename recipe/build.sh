@@ -4,6 +4,7 @@ export DISABLE_AUTOBREW=1
 
 echo $PATH
 echo $BUILD_PREFIX/bin
+ld $BUILD_PREFIX/bin
 
 which $CXX
 
