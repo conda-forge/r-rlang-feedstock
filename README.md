@@ -3,6 +3,7 @@ About r-rlang-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rlang-feedstock/blob/main/LICENSE.txt)
 
+
 About r-rlang
 -------------
 
@@ -11,6 +12,7 @@ Home: http://rlang.r-lib.org, https://github.com/r-lib/rlang
 Package license: GPL-3.0-only
 
 Summary: A toolbox for working with base types, core R features like the condition system, and core 'Tidyverse' features like tidy evaluation.
+
 About r-rlang
 -------------
 
