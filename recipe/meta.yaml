@@ -1,4 +1,4 @@
-{% set version = "1.1.5" %}
+{% set version = "1.1.6" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rlang_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rlang/rlang_{{ version }}.tar.gz
-  sha256: 9fd99b244f1d81df89dff501c702e8347b12434ea492338d3d04eb3fbcc01ced
+  sha256: 18544c876f4e18ec554edecc308362a52fbc7e0805c4794cf59bcc4d0b57f330
 
 build:
   number: 0
